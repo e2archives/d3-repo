@@ -52,10 +52,10 @@ an array of render options:
 * `parse` describes how to render the value for each entry (optional). The argument is an object of the form `{key:a, value:b, data:c}`. HTML tags are allowed in the return `String`.
 
 
+You can also bind `click` events to either the rows (`tr`) or individual cells (`td`).
 
-
-
-
-
-
+    var table = viz.Table()
+                  .id("genericID")
+                  .setClass("table striped hovered")
+                  .click("tr", function(d){ #do something } ) 
 

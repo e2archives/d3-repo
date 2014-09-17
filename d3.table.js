@@ -5,7 +5,12 @@ viz.Table = Table
 
 function Table()
 {
-	var id, classed, keys, parse = function(d){return d.value || d}	
+	var id, 
+		classed, 
+		keys, 
+		parse = function(d){return d.value || d},
+		click = {}
+		
 	var ele = function(selection){
 
 		selection.each(function(d, i) {
@@ -34,10 +39,12 @@ function Table()
 				.data(d)
 				.enter()
 					.append('tr')
+						.on('click',click.tr || undefined )
 						.selectAll('td')
 						.data(function(dd){return _data.map(function(v){return {data:dd, parse:v.parse || parse, key:v.key || v, value:dd[v.key || v]}})})
 						.enter()
 							.append('td')
+								.on('click',click.td || undefined )
 								.html(function(dd){return dd.parse(dd)})
 			
 			
@@ -48,7 +55,7 @@ function Table()
 	ele.id = function(value){
 		
 		if (!arguments.length) return id;
-		id = value
+		id = value 
 		return ele
 	}
 	
@@ -65,6 +72,12 @@ function Table()
 		return ele
 	}
 	
+	ele.click = function(type,value){
+		if (arguments.length <= 1) return click;
+		click = click || {}
+		click[type.toLowerCase() ] = value
+		return ele
+	}
 	return ele
 }
 	
