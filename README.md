@@ -47,7 +47,7 @@ an array of render options:
     
 * `key` describes the column to be rendered. e.g. `key1` in `[{key1:a, key2:b, key3:c}]`
 
-* `head` describes the table headings for each column (optional).
+* `head` describes the table headings for each column (optional). HTML tags are allowed.
 
 * `parse` describes how to render the value for each entry (optional). The argument is an object of the form `{key:a, value:b, data:c}`. HTML tags are allowed in the return `String`.
 
